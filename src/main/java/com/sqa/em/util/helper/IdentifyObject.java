@@ -56,7 +56,7 @@ public class IdentifyObject {
 		StringBuilder sBuilder = new StringBuilder();
 		sBuilder.append("Display 2D Matrix\n\n");
 		for (int row = 0; row < objects.length; row++) {
-			for (int colum = 0; colum < objects.length; colum++) {
+			for (int colum = 0; colum < objects[row].length; colum++) {
 				sBuilder.append("\t" + objects[row][colum]);
 			}
 			sBuilder.append("\n");
@@ -79,7 +79,16 @@ public class IdentifyObject {
 
 	// Uses Reflection API
 	public static String getInfo(Object obj) {
-		return null;
+		StringBuilder sb = new StringBuilder();
+		sb.append("Object Type: ");
+		sb.append(obj.getClass().getSimpleName());
+		sb.append("\tFields are: ");
+		sb.append(Arrays.toString(getFieldNames(obj)));
+		sb.append("\n");
+		sb.append("\tMethods are: ");
+		sb.append(Arrays.toString(getMethodNames(obj)));
+		sb.append("\n");
+		return sb.toString();
 	}
 
 	// Uses Reflection API
