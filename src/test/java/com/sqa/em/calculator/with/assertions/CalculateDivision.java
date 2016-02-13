@@ -31,22 +31,32 @@ public class CalculateDivision {
 	// };
 	// return data;
 	// }
+	// @Parameters
+	// public static Object[][] getData() {
+	// Object[][] data = { { "Test 1", 12.00, 6.00, 2.00 }, { "Test 2", 14.00,
+	// 2.00, 7.00 },
+	// { "Test 3", 100.00, 1.00, 100.00 }, { "Test 4", 4.00, 6.00, 0.67 }, {
+	// "Test 5", 45.00, 5.00, 9.00 },
+	// { "Test 6", 5.00, 6.00, 100.00 } };
+	// return data;
+	// }
 	@Parameters
 	public static Object[][] getData() {
-		Object[][] data = { { "Test 1", 12, 6, 2 }, { "Test 2", 14, 2, 7 }, { "Test 3", 100, 1, 100 },
-				{ "Test 4", 4, 6, 0.67 }, { "Test 5", 45, 5, 9 }, { "Test 6", 5, 6, 100 } };
+		Object[][] data = { { "Test 1", 12, 6, 2 }, { "Test 2", 14, 2, 7 }, { "Test 3", 100.00, 1.00, 100.00 },
+				{ "Test 4", 4, 6, 0.67 }, { "Test 5", 45, 5, 9 }, { "Test 6", 5.00, 6.00, 100.00 } };
 		return data;
 	}
 
 	String label;
 
-	int num1;
+	double num1;
 
-	int num2;
+	double num2;
 
-	int expected;
+	double expected;
 
-	public CalculateDivision(String label, int num1, int num2, int expected) {
+	// This gets call automatically and gets the data Object[]
+	public CalculateDivision(String label, double num1, double num2, double expected) {
 		this.label = label;
 		this.num1 = num1;
 		this.num2 = num2;
@@ -55,11 +65,14 @@ public class CalculateDivision {
 
 	@Test
 	public void divideNumbersTest() {
-		System.out.println(this.label);
+		System.out.println("\n" + this.label);
 		IdentifyObject.display2DInfo(getData());
-		int total = this.num1 / this.num2;
+		double total = this.num1 / this.num2;
 		System.out.print("Tota = " + total);
-		Assert.assertEquals(this.expected, total);
-		System.out.println(" Passed ");
+		Assert.assertEquals(this.expected, total, 1);// By entering 1 you are
+														// asking that the
+														// results could be + or
+														// - 1
+		System.out.println("\n Passed ");
 	}
 }
